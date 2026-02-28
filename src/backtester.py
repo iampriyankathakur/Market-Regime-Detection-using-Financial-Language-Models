@@ -1,20 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def backtest(regimes, returns):
+def backtest(predicted_regimes, returns):
 
-    strategy = []
-    for r, ret in zip(regimes, returns):
-        if r == 0:
-            strategy.append(ret)
+    strategy_returns = []
+
+    for regime, ret in zip(predicted_regimes, returns):
+        if regime == 0:
+            strategy_returns.append(ret)
         else:
-            strategy.append(0)
+            strategy_returns.append(0)
 
-    strategy = np.array(strategy)
-    cumulative_strategy = np.cumprod(1 + strategy)
+    strategy_returns = np.array(strategy_returns)
+
+    cumulative_strategy = np.cumprod(1 + strategy_returns)
     cumulative_market = np.cumprod(1 + returns)
 
-    plt.plot(cumulative_strategy, label="Strategy")
+    plt.figure(figsize=(10,6))
+    plt.plot(cumulative_strategy, label="Regime Strategy")
     plt.plot(cumulative_market, label="Buy & Hold")
     plt.legend()
+    plt.title("Strategy vs Market")
     plt.show()
