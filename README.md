@@ -13,7 +13,6 @@ The framework integrates:
 - Temporal sequence modeling
 - Regime-driven portfolio backtesting
 
----
 
 ## 🧠 Methodology
 
@@ -34,16 +33,12 @@ Portfolio allocation is determined based on predicted regime:
 
 Strategy performance is evaluated against Buy & Hold.
 
----
-
 ## 📊 Evaluation
 
 - Regime classification accuracy
 - Regime stability analysis
 - Strategy cumulative returns
 - Sharpe ratio comparison
-
----
 
 ## 🛠 Technologies
 
@@ -55,8 +50,6 @@ Strategy performance is evaluated against Buy & Hold.
 - yFinance
 - Scikit-learn
 - Pandas
-
----
 
 ## ▶️ Run
 
