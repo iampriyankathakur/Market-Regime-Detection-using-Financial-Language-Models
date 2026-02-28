@@ -1,19 +1,22 @@
 import yfinance as yf
 import pandas as pd
+from datetime import datetime
 
-def load_market_data(symbol="SPY", start="2015-01-01"):
-    df = yf.download(symbol, start=start)
+def load_market_data(symbol, start_date):
+    df = yf.download(symbol, start=start_date)
     df["Returns"] = df["Close"].pct_change()
-    df = df.dropna()
+    df.dropna(inplace=True)
     return df
 
-def load_mock_news():
-    # Replace with real macro news dataset later
-    texts = [
-        "Inflation pressures continue to rise amid supply constraints",
-        "Federal Reserve signals possible rate cuts next quarter",
-        "Economic growth remains stable despite volatility",
-        "Recession fears increase as consumer spending slows",
-        "Strong labor market supports bullish outlook"
-    ] * 200
+def generate_macro_news(df):
+    """
+    Synthetic macro narratives aligned with dates.
+    Replace with real API ingestion in production.
+    """
+    texts = []
+    for date in df.index:
+        if df.loc[date]["Returns"] > 0:
+            texts.append("Economic outlook improving with strong labor and growth data")
+        else:
+            texts.append("Market uncertainty rising amid inflation and recession fears")
     return texts
