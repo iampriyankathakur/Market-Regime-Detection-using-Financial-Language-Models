@@ -1,0 +1,9 @@
+torch
+transformers
+pandas
+numpy
+yfinance
+umap-learn
+hdbscan
+scikit-learn
+matplotlib
